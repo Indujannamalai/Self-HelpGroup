@@ -186,28 +186,25 @@ https://templatemo.com/tm-545-finance-business
           <h2 align="left">Welcome:Admin</h2>
           <table width="1428" border="1">
             <tr>
-              <td><div align="center">View Payment Report </div></td>
+              <td><div align="center">View Employee Report </div></td>
             </tr>
             <tr>
-              <td><table width="1403" height="67" border="1">
+              <td><table width="1417" height="67" border="1">
                 <tr>
-                  <td><span class="style16">Payment ID </span></td>
-                  <td><span class="style16">Payment Date </span></td>
-                  <td><span class="style16">Member ID </span></td>
-                  <td><span class="style16">Member Name </span></td>
+                  <td><span class="style16">Employee ID </span></td>
+                  <td><span class="style16">Employee Name </span></td>
+                  <td><span class="style16">Gender </span></td>
+                  <td><span class="style16">Contact Number </span></td>
+                  <td><span class="style16">Email ID </span></td>
+                  <td><span class="style16">Address </span></td>
                   <td><span class="style16">Team Name </span></td>
-				   <td><span class="style16">Loan Name </span></td>
-                  <td><span class="style16">Loan Amount </span></td>
-                  <td><span class="style16">Due Amount </span></td>
-                  <td><span class="style16">Due Count </span></td>
-                  <td><span class="style16">Collection Amount </span></td>
-                  <td><span class="style16">Payment Receipt </span></td>
+                  <td><span class="style16">Team Location </span></td>
                 </tr>
                 <tr>
                   <?php
 					$rowsPerPage =7;
 		    		require_once("mysql.php");
-		$sql = "SELECT * FROM addpayment ";
+		$sql = "SELECT * FROM addemployee  ";
 					
 					$result = mysql_query($sql);	
 					$row = mysql_fetch_array($result);
@@ -215,17 +212,20 @@ https://templatemo.com/tm-545-finance-business
 					$i=0; 
 					while($i < $num) 
 					{
-								$a1=mysql_result($result,$i,"paymentid");
-								$a2=mysql_result($result,$i,"paymentdate");
-								$a3=mysql_result($result,$i,"memberid");
-								$a4=mysql_result($result,$i,"membername");	
-								$a5=mysql_result($result,$i,"teamname");
-								$a6=mysql_result($result,$i,"loanname");
-								$a7=mysql_result($result,$i,"loanamount");
-							    $a8=mysql_result($result,$i,"dueamount");
-								$a9=mysql_result($result,$i,"duecount");
-								$a10=mysql_result($result,$i,"collectionamount");
-								$a11=mysql_result($result,$i,"paymentreceipt");
+								$a1=mysql_result($result,$i,"employeeid");
+								$a2=mysql_result($result,$i,"employeename");
+								$a3=mysql_result($result,$i,"gender");
+								$a4=mysql_result($result,$i,"contactnumber");	
+								$a5=mysql_result($result,$i,"emailid");
+								$a6=mysql_result($result,$i,"address");
+							    $a7=mysql_result($result,$i,"teamname");
+								$a8=mysql_result($result,$i,"teamlocation");
+								
+								
+								
+								
+								
+									
 								
 			?>
                   <td><?php echo $a1; ?></td>
@@ -236,9 +236,6 @@ https://templatemo.com/tm-545-finance-business
                   <td><?php echo $a6; ?></td>
                   <td><?php echo $a7; ?></td>
                   <td><?php echo $a8; ?></td>
-                  <td><?php echo $a9; ?></td>
-				  <td><?php echo $a10; ?></td>
-                  <td><img src="payment/<?php echo $a11; ?>" title="<?php echo $a11; ?>" alt="1" width="242" height="172" border="0"></td>
                 </tr>
                 <?php
 				$i++;} 

@@ -16,29 +16,27 @@ $username="root";
 $password=""; 
 $db = "womensgroup";
 $dbh = new PDO("mysql:host=$hostname;dbname=$db", $username, $password);
-foreach($dbh->query('SELECT MAX(registerid) FROM register') as $row)
+
+foreach($dbh->query('SELECT MAX(feedbackid) FROM addfeedback') as $row)
 		{
-			$a1=$row['MAX(registerid)']+1;
+			$a1=$row['MAX(feedbackid)']+1;
 		}
 		
-$date=date('d-m-Y');
-		
+	$date=date('d-m-Y');	
+
 if(isset($_REQUEST['Submit']))
 {
 
 		
-   $sql="INSERT INTO register VALUES ('$_POST[textfield]','$_POST[textfield2]','$_POST[select]','$_POST[textfield3]','$_POST[textfield4]','$_POST[textfield5]','$_POST[textfield6]','$_POST[textfield7]','$_POST[textfield8]')"; 
+   $sql="INSERT INTO addfeedback VALUES ('$_POST[textfield]','$_POST[textfield2]','$_POST[memberid]','$_POST[textfield3]','$_POST[textfield4]','$_POST[textfield5]')"; 
 echo $sql;
 	
 	if ($conn->query($sql) === TRUE)
 			{
 			
-			  $sql1="INSERT INTO login VALUES ('$_POST[textfield6]','$_POST[textfield7]','$_POST[textfield],,'$_POST[textfield2]')"; 
-			if ($conn->query($sql1) === TRUE)
-			{
-			}
+			  
 		//	echo "success"; 
-echo '<script>alert("Register Details Saved Successfully!");</script>';
+echo '<script>alert("Feedback Details Saved Successfully!");</script>';
 //$$URL="Register.php";
 echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
 echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
@@ -54,9 +52,33 @@ if(isset($_REQUEST['Submit2']))
 $_POST['username']="";
 $_POST['password']="";
 }
+
+if(isset($_REQUEST['Submit3']))
+{
+require_once("mysql.php");
+$sel ="select * from addmember where memberid='".$_POST['memberid']."' "; 
+$result = mysql_query($sel);	
+$row = mysql_fetch_array($result);
+	$num=mysql_num_rows($result);
+	$i=0; 
+	while($i < $num) 
+	{
+		$a2=mysql_result($result,$i,"memberid");
+	if(	$a2==$_POST['memberid'])
+		{
+	
+		
+		$a3=mysql_result($result,$i,"membername");
+		$a4=mysql_result($result,$i,"teamname");
+		
+		
+			
+		}
+		$i++;
+	}
+	
+}
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -86,14 +108,23 @@ https://templatemo.com/tm-545-finance-business
 -->
   <style type="text/css">
 <!--
+.style8 {
+	font-family: "Times New Roman", Times, serif;
+	color: #0000FF;
+	font-weight: bold;
+}
+.style14 {font-family: "Times New Roman", Times, serif; font-size: 24px; font-weight: bold; color: #0000FF; }
 .style15 {font-family: "Times New Roman", Times, serif; font-size: 18px; font-weight: bold; color: #0000FF; }
+.style16 {font-family: "Times New Roman", Times, serif}
+.style2 {font-family: "Times New Roman", Times, serif;
+	font-size: 18px;
+}
 -->
   </style>
   </head>
 
   <body>
-  <form id="form1" name="form1" method="post" action="">
-
+<form id="form1" name="form1" method="post" action="">
     <!-- ***** Preloader Start ***** -->
     <div id="preloader">
         <div class="jumper">
@@ -115,21 +146,21 @@ https://templatemo.com/tm-545-finance-business
           <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
               <li class="nav-item active">
-                <a class="nav-link" href="Homepage.php">Home
+                <a class="nav-link" href="UserHome.php">Home
                   <span class="sr-only">(current)</span>
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="Aboutus.php">About Us</a>
+                <a class="nav-link" href="ViewMeeting.php">View Meeting</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="Services.php">Our Services</a>
+                <a class="nav-link" href="ViewPayment.php">View Payment</a>
               </li>
 			   <li class="nav-item">
-                <a class="nav-link" href="Contactus.php">Contact Us</a>
+                <a class="nav-link" href="AddFeedback.php">Feedback</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="Login.php">Login</a>
+                <a class="nav-link" href="Login.php">Logout</a>
               </li>
             </ul>
           </div>
@@ -181,66 +212,64 @@ https://templatemo.com/tm-545-finance-business
     <div class="request-form">
       <div class="container">
         <div class="row">
-          <div class="col-md-8">
-          <h2 align="left">Register Details <em></em></h2>
-              <table width="829" height="141" border="1">
-                <tr>
-                  <td class="style15">Register Date </td>
-                  <td><input name="textfield8" type="password" id="textfield8" value="<?php echo $date;?>"></td>
-                  <td width="388" rowspan="9"><img src="assets/images/2.jpg" width="277" height="182"></td>
-                </tr>
-                <tr>
-                  <td width="221" class="style15"><span class="style15">Register ID</span></td>
-                  <td width="198"><input name="textfield" type="text" id="textfield" value=" <?php echo $a1; ?>"></td>
-                </tr>
-                <tr>
-                  <td class="style15"><span class="style15">Register Name </span></td>
-                  <td><input name="textfield2" type="text" id="textfield2"></td>
-                </tr>
-                <tr>
-                  <td class="style15"><span class="style15">Gender</span></td>
-                  <td><div align="left">
-                    <select name="select">
-                      <option value="Select">Select</option>
-                      <option value="Male">Male</option>
-                      <option value="Female">Female</option>
-                      <option value="Others">Others</option>
-                                        </select>
-                  </div></td>
-                </tr>
-                <tr>
-                  <td class="style15"><span class="style15">Contact Number </span></td>
-                  <td><input name="textfield3" type="text" id="textfield3"></td>
-                </tr>
-                <tr>
-                  <td class="style15"><span class="style15">Email ID </span></td>
-                  <td><input name="textfield4" type="text" id="textfield4"></td>
-                </tr>
-                <tr>
-                  <td class="style15"><span class="style15">Address</span></td>
-                  <td><textarea name="textfield5" id="textfield5"></textarea></td>
-                </tr>
-                <tr>
-                  <td class="style15"><span class="style15">User Name </span></td>
-                  <td><input name="textfield6" type="text" id="textfield6"></td>
-                </tr>
-                <tr>
-                  <td class="style15"><span class="style15">Password</span></td>
-                  <td><input name="textfield7" type="password" id="textfield7"></td>
-                </tr>
-                <tr>
-                  <td><div align="center">
-                    <input type="submit" name="Submit" value="Register">
-                  </div></td>
-                  <td><div align="center">
-                    <input type="submit" name="Submit2" value="Cancel">
-                  </div></td>
-                  <td>&nbsp;</td>
-                </tr>
-              </table>
-          </div>
-          <div class="col-md-4">
-           
+          <div class="col-md-20">
+          <h2 align="left">Welcome:<?php echo $_SESSION['username'];?></h2>
+          <table width="829" height="141" border="1">
+            <tr>
+              <td colspan="2" class="style15"><div align="center">Add Meeting Details </div></td>
+              <td width="388" rowspan="9"><img src="assets/images/1.jpg" alt="admin" width="290" height="174"></td>
+            </tr>
+            <tr>
+              <td width="221" class="style15">Feedback ID </td>
+              <td width="198"><input name="textfield" type="text" id="textfield" value=" <?php echo $a1; ?>"></td>
+            </tr>
+            <tr>
+              <td class="style15">Feedback Date </td>
+              <td><input name="textfield2" type="text" id="textfield2"value=" <?php echo $date; ?>"></td>
+            </tr>
+            <tr>
+              <td class="style15">Member ID </td>
+              <td><div align="left">
+                  <?php 
+			mysql_connect('localhost', 'root', '');
+			mysql_select_db('womensgroup');
+			$sql = "SELECT memberid FROM addmember";
+			$result = mysql_query($sql);
+			echo "<select name='memberid'>";
+			while ($row = mysql_fetch_array($result))
+			{
+				//echo "<option> </option>";
+				echo "<option value='" . $row['memberid'] . "'>" . $row['memberid'] . "</option>";
+			}
+			echo "</select>";
+		?>
+                  <input type="submit" name="Submit3" value="View">
+              </div></td>
+            </tr>
+            <tr>
+              <td class="style15">Member Name </td>
+              <td><input name="textfield3" type="text" id="textfield3" value=" <?php echo $a3; ?>"></td>
+            </tr>
+            <tr>
+              <td class="style15">Team Name </td>
+              <td><input name="textfield4" type="text" id="textfield4" value=" <?php echo $a4; ?>"></td>
+            </tr>
+            <tr>
+              <td class="style15">Feedback Description </td>
+              <td><textarea name="textfield5" id="textfield5"></textarea></td>
+            </tr>
+         
+            <tr>
+              <td><div align="center">
+                  <input type="submit" name="Submit" value="Add Feedback">
+              </div></td>
+              <td><div align="center">
+                  <input type="submit" name="Submit2" value="Cancel">
+              </div></td>
+            
+            </tr>
+          </table>
+          <p align="left">&nbsp;</p>
           </div>
         </div>
       </div>
@@ -259,7 +288,9 @@ https://templatemo.com/tm-545-finance-business
     
     <div class="sub-footer">
       <div class="container">
-        <div class="row style15">CopyRights Reserved @ 2023 </div>
+        <div class="row">
+          
+        </div>
       </div>
     </div>
 

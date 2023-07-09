@@ -25,7 +25,20 @@ Finance Business TemplateMo
 https://templatemo.com/tm-545-finance-business
 
 -->
-  </head>
+  <style type="text/css">
+<!--
+.style1 {
+	font-family: "Times New Roman", Times, serif;
+	font-size: 24px;
+	color: #0000FF;
+}
+.style4 {color: #0000FF}
+body,td,th {
+	color: #0000FF;
+}
+-->
+  </style>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"></head>
 
   <body>
 
@@ -40,6 +53,7 @@ https://templatemo.com/tm-545-finance-business
     <!-- ***** Preloader End ***** -->
 
     <!-- Header -->
+   
 
     <header class="">
       <nav class="navbar navbar-expand-lg">
@@ -80,6 +94,8 @@ https://templatemo.com/tm-545-finance-business
           <div class="item item-1">
             <div class="img-fill">
                 <div class="text-content">
+                
+          
                 </div>
             </div>
           </div>
@@ -89,10 +105,9 @@ https://templatemo.com/tm-545-finance-business
             <div class="img-fill">
 
                 <div class="text-content">
-                  <h6>we are here to support you</h6>
-                   <h4>Self Help Groups<br>&amp; Activities</h4>
-                  <p>The members of the group agree to use this common fund and such other funds that they may receive as a group through a common management. Please contact The group formation will keep in view the following broad guidelines.</p>
-                  <a href="Services.php" class="filled-button">our services</a>
+                  
+				  
+                 
                 </div>
             </div>
           </div>
@@ -101,10 +116,9 @@ https://templatemo.com/tm-545-finance-business
           <div class="item item-3">
             <div class="img-fill">
                 <div class="text-content">
-                  <h6>we have a solid background</h6>
-               <h4>Self Help Groups<br>&amp; Activities</h4>
-                  <p>Generally a self-help group may consist of 10 to 20 persons. However, in difficult areas like deserts, hills and areas with scattered and sparse population and in case of minor irrigation and disabled persons, this number may be from 5-20.</p>
-                  <a href="about.html" class="filled-button">learn more</a>
+                
+				  
+                 
                 </div>
             </div>
           </div>
@@ -145,7 +159,7 @@ https://templatemo.com/tm-545-finance-business
               </div>
             </div>
           </div>
-          <div class="col-md-4">
+            <div class="col-md-6 align-self-center">
             <div class="service-item">
               <img src="assets/images/Emproidary.jpg" alt="" width="300" height="194">
               <div class="down-content">
@@ -155,7 +169,7 @@ https://templatemo.com/tm-545-finance-business
               </div>
             </div>
           </div>
-          <div class="col-md-4">
+           <div class="col-md-6 align-self-center">
             <div class="service-item">
               <img src="assets/images/HandiCraft.jpg" alt="" width="300" height="129">
               <div class="down-content">
@@ -170,50 +184,7 @@ https://templatemo.com/tm-545-finance-business
     </div>
 
     <div class="fun-facts">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6">
-            <div class="left-content">
-              <span>Lorem ipsum dolor sit amet</span>
-              <h2>Our solutions for your <em>business growth</em></h2>
-              <p>Pellentesque ultrices at turpis in vestibulum. Aenean pretium elit nec congue elementum. Nulla luctus laoreet porta. Maecenas at nisi tempus, porta metus vitae, faucibus augue. 
-              <br><br>Fusce et venenatis ex. Quisque varius, velit quis dictum sagittis, odio velit molestie nunc, ut posuere ante tortor ut neque.</p>
-              <a href="" class="filled-button">Read More</a>
-            </div>
-          </div>
-          <div class="col-md-6 align-self-center">
-            <div class="row">
-              <div class="col-md-6">
-                <div class="count-area-content">
-                  <div class="count-digit">945</div>
-                  <div class="count-title">Work Hours</div>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="count-area-content">
-                  <div class="count-digit">1280</div>
-                  <div class="count-title">Great Reviews</div>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="count-area-content">
-                  <div class="count-digit">578</div>
-                  <div class="count-title">Projects Done</div>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="count-area-content">
-                  <div class="count-digit">26</div>
-                  <div class="count-title">Awards Won</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="more-info">
+      <div class="more-info">
       <div class="container">
         <div class="row">
           <div class="col-md-12">
@@ -228,7 +199,8 @@ https://templatemo.com/tm-545-finance-business
                   <div class="right-content">
                     <span>Who we are</span>
                     <h2>Get to know about <em>our company</em></h2>
-                    <p>The group should devise a code of conduct (Group management norms) to bind itself. This should be in the form of regular meetings (weekly or fortnightly), functioning in a democratic manner, allowing free exchange of views, participation by the members in the decision making process.</p>
+					 <h2>The group should devise a code of conduct (Group management norms) to bind itself. This should be in the form of regular meetings (weekly or fortnightly), functioning in a democratic manner, allowing free exchange of views, participation by the members in the decision making process.</em></h2>
+                   
                     <a href="#" class="filled-button">Read More</a>
                   </div>
                 </div>
@@ -329,14 +301,49 @@ https://templatemo.com/tm-545-finance-business
     <!-- Footer Starts Here -->
     <footer>
       <div class="container">
-        <div class="row"></div>
-      </div>
+        <div class="row">
+          <div class="col-md-3 footer-item">
+            <h4 class="style1">Womens Self Help Group Portal</h4>
+            <p class="style1">&nbsp;</p>
+            <ul class="social-icons">
+              <li><span class="style1"></span></li>
+              <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+              <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+              <li><a href="#"><i class="fa fa-behance"></i></a></li>
+            </ul>
+          </div>
+          <div class="col-md-3 footer-item">
+            <h4 class="style4">Useful Links</h4>
+            <ul class="menu-list">
+			  <h4 class="style4">Introduction</h4>
+			    <h4 class="style4">Service</h4>
+				  <h4 class="style4">Group Activities</h4>
+				    <h4 class="style4">Self Motivation</h4>
+					
+            
+            </ul>
+          </div>
+          <div class="col-md-3 footer-item">
+           <h4 class="style4">Activities</h4>
+            <ul class="menu-list style4">
+			<h4 class="style4">About us</h4>
+			<h4 class="style4">How We work</h4>
+			<h4 class="style4">Quick Support</h4>
+			<h4 class="style4">Contact Us</h4>
+			<h4 class="style4">Privacy Pollicy</h4>
+              <li><a href="#" class="style4">About Us</a></li>
+              <li></li>
+            </ul>
+          </div>
+          
+        </div>
+          </div>
         </div>
       </div>
     </footer>
     
     <div class="sub-footer">
-      <div class="container">
+     <div class="container">
         <div class="row style15">CopyRights Reserved @ 2023 </div>
       </div>
     </div>

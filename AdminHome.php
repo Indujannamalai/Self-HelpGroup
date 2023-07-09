@@ -1,62 +1,3 @@
-<?php
-session_start(); 
-		$servername = "localhost";
-		$Username = "root";
-		$password = "";
-		$dbname = "womensgroup";
-		$nameErr="";
-		// Create connection
-		$conn = new mysqli($servername, $Username, $password, $dbname);
-		// Check connection
-		if ($conn->connect_error) {
-			die("Connection failed: " . $conn->connect_error);
-		}
-		$hostname="localhost";
-$username="root";
-$password=""; 
-$db = "womensgroup";
-$dbh = new PDO("mysql:host=$hostname;dbname=$db", $username, $password);
-foreach($dbh->query('SELECT MAX(registerid) FROM register') as $row)
-		{
-			$a1=$row['MAX(registerid)']+1;
-		}
-		
-$date=date('d-m-Y');
-		
-if(isset($_REQUEST['Submit']))
-{
-
-		
-   $sql="INSERT INTO register VALUES ('$_POST[textfield]','$_POST[textfield2]','$_POST[select]','$_POST[textfield3]','$_POST[textfield4]','$_POST[textfield5]','$_POST[textfield6]','$_POST[textfield7]','$_POST[textfield8]')"; 
-echo $sql;
-	
-	if ($conn->query($sql) === TRUE)
-			{
-			
-			  $sql1="INSERT INTO login VALUES ('$_POST[textfield6]','$_POST[textfield7]','$_POST[textfield],,'$_POST[textfield2]')"; 
-			if ($conn->query($sql1) === TRUE)
-			{
-			}
-		//	echo "success"; 
-echo '<script>alert("Register Details Saved Successfully!");</script>';
-//$$URL="Register.php";
-echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
-echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
-}
-else 
-			{
-				echo "Error: " . $sql . "<br>" . $conn->error;
-			}
-}
-
-if(isset($_REQUEST['Submit2']))
-{
-$_POST['username']="";
-$_POST['password']="";
-}
-?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -86,14 +27,18 @@ https://templatemo.com/tm-545-finance-business
 -->
   <style type="text/css">
 <!--
-.style15 {font-family: "Times New Roman", Times, serif; font-size: 18px; font-weight: bold; color: #0000FF; }
+.style8 {
+	font-family: "Times New Roman", Times, serif;
+	color: #0000FF;
+	font-weight: bold;
+}
+.style14 {font-family: "Times New Roman", Times, serif; font-size: 24px; font-weight: bold; color: #0000FF; }
 -->
   </style>
   </head>
 
   <body>
-  <form id="form1" name="form1" method="post" action="">
-
+<form id="form1" name="form1" method="post" action="">
     <!-- ***** Preloader Start ***** -->
     <div id="preloader">
         <div class="jumper">
@@ -115,21 +60,21 @@ https://templatemo.com/tm-545-finance-business
           <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
               <li class="nav-item active">
-                <a class="nav-link" href="Homepage.php">Home
+                <a class="nav-link" href="AdminHome.php">Home
                   <span class="sr-only">(current)</span>
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="Aboutus.php">About Us</a>
+                <a class="nav-link" href="AddGroup.php">New Group</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="Services.php">Our Services</a>
+                <a class="nav-link" href="AddEmployee.php">Employee</a>
               </li>
 			   <li class="nav-item">
-                <a class="nav-link" href="Contactus.php">Contact Us</a>
+                <a class="nav-link" href="AdminReport.php">Report</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="Login.php">Login</a>
+                <a class="nav-link" href="Login.php">Logout</a>
               </li>
             </ul>
           </div>
@@ -181,63 +126,14 @@ https://templatemo.com/tm-545-finance-business
     <div class="request-form">
       <div class="container">
         <div class="row">
-          <div class="col-md-8">
-          <h2 align="left">Register Details <em></em></h2>
-              <table width="829" height="141" border="1">
-                <tr>
-                  <td class="style15">Register Date </td>
-                  <td><input name="textfield8" type="password" id="textfield8" value="<?php echo $date;?>"></td>
-                  <td width="388" rowspan="9"><img src="assets/images/2.jpg" width="277" height="182"></td>
-                </tr>
-                <tr>
-                  <td width="221" class="style15"><span class="style15">Register ID</span></td>
-                  <td width="198"><input name="textfield" type="text" id="textfield" value=" <?php echo $a1; ?>"></td>
-                </tr>
-                <tr>
-                  <td class="style15"><span class="style15">Register Name </span></td>
-                  <td><input name="textfield2" type="text" id="textfield2"></td>
-                </tr>
-                <tr>
-                  <td class="style15"><span class="style15">Gender</span></td>
-                  <td><div align="left">
-                    <select name="select">
-                      <option value="Select">Select</option>
-                      <option value="Male">Male</option>
-                      <option value="Female">Female</option>
-                      <option value="Others">Others</option>
-                                        </select>
-                  </div></td>
-                </tr>
-                <tr>
-                  <td class="style15"><span class="style15">Contact Number </span></td>
-                  <td><input name="textfield3" type="text" id="textfield3"></td>
-                </tr>
-                <tr>
-                  <td class="style15"><span class="style15">Email ID </span></td>
-                  <td><input name="textfield4" type="text" id="textfield4"></td>
-                </tr>
-                <tr>
-                  <td class="style15"><span class="style15">Address</span></td>
-                  <td><textarea name="textfield5" id="textfield5"></textarea></td>
-                </tr>
-                <tr>
-                  <td class="style15"><span class="style15">User Name </span></td>
-                  <td><input name="textfield6" type="text" id="textfield6"></td>
-                </tr>
-                <tr>
-                  <td class="style15"><span class="style15">Password</span></td>
-                  <td><input name="textfield7" type="password" id="textfield7"></td>
-                </tr>
-                <tr>
-                  <td><div align="center">
-                    <input type="submit" name="Submit" value="Register">
-                  </div></td>
-                  <td><div align="center">
-                    <input type="submit" name="Submit2" value="Cancel">
-                  </div></td>
-                  <td>&nbsp;</td>
-                </tr>
-              </table>
+          <div class="col-md-20">
+          <h2 align="left">Welcome:Admin</h2>
+          <p align="justify"><strong>SHG is group of rural poor who have volunteered to organise themselves into a group for eradication of poverty of the members. They agree to save regularly and convert their savings into a Common Fund known as the Group corpus. The members of the group agree to use this common fund and such other funds that they may receive as a group through a common management. The group formation will keep in view the following broad guidelines :</strong></p>
+          <p align="justify"><strong>Generally a self-help group may consist of 10 to 20 persons. However, in difficult areas like deserts, hills and areas with scattered and sparse population and in case of minor irrigation and disabled persons, this number may be from 5-20. The difficult areas have to be identified by the State Level SGSY Committee and the above relaxation in membership will be permitted only in such areas.</strong></p>
+          <p align="justify"><strong>Generally all members of the group should belong to families below the poverty line. However, if necessary, a maximum of 20% and in exceptional cases , where essentially required, upto a maximum of 30% of the members in a group may be taken from families marginally above the poverty line living contiguously with BPL families and if they are acceptable to the BPL members of the group. This will help the families of occupational groups like agricultural labourers, marginal farmers and artisans marginally above the poverty line, or who may have been excluded from the BPL list to become members of the Self Help Group. However,the APL members will not be eligible for the subsidy under the scheme<u>.</u> The group shall not consist of more than one member from the same family. A person should not be a member of more than one group. The BPL families must actively participate in the management and decision making, which should not ordinarily be entirely in the hands of APL families. Further, APL members of the Self Help Group shall not become office bearers( Group Leader, Assistant Group Leader or Treasurer )of the Group.</strong></p>
+          <p align="justify"><strong>The group should devise a code of conduct (Group management norms) to bind itself. This should be in the form of regular meetings (weekly or fortnightly), functioning in a democratic manner, allowing free exchange of views, participation by the members in the decision making process.</strong></p>
+          <h2 align="left"><em></em></h2>
+          <p align="left">&nbsp;</p>
           </div>
           <div class="col-md-4">
            
@@ -259,7 +155,9 @@ https://templatemo.com/tm-545-finance-business
     
     <div class="sub-footer">
       <div class="container">
-        <div class="row style15">CopyRights Reserved @ 2023 </div>
+        <div class="row">
+          
+        </div>
       </div>
     </div>
 

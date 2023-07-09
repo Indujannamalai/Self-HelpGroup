@@ -80,6 +80,8 @@ https://templatemo.com/tm-545-finance-business
           <div class="item item-1">
             <div class="img-fill">
                 <div class="text-content">
+                 
+                 
                 </div>
             </div>
           </div>
@@ -89,10 +91,7 @@ https://templatemo.com/tm-545-finance-business
             <div class="img-fill">
 
                 <div class="text-content">
-                  <h6>we are here to support you</h6>
-                   <h4>Self Help Groups<br>&amp; Activities</h4>
-                  <p>The members of the group agree to use this common fund and such other funds that they may receive as a group through a common management. Please contact The group formation will keep in view the following broad guidelines.</p>
-                  <a href="Services.php" class="filled-button">our services</a>
+                
                 </div>
             </div>
           </div>
@@ -101,10 +100,7 @@ https://templatemo.com/tm-545-finance-business
           <div class="item item-3">
             <div class="img-fill">
                 <div class="text-content">
-                  <h6>we have a solid background</h6>
-               <h4>Self Help Groups<br>&amp; Activities</h4>
-                  <p>Generally a self-help group may consist of 10 to 20 persons. However, in difficult areas like deserts, hills and areas with scattered and sparse population and in case of minor irrigation and disabled persons, this number may be from 5-20.</p>
-                  <a href="about.html" class="filled-button">learn more</a>
+                 
                 </div>
             </div>
           </div>
@@ -336,7 +332,7 @@ https://templatemo.com/tm-545-finance-business
     </footer>
     
     <div class="sub-footer">
-      <div class="container">
+     <div class="container">
         <div class="row style15">CopyRights Reserved @ 2023 </div>
       </div>
     </div>

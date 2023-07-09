@@ -1,76 +1,17 @@
 <?php
-session_start(); 
 $con = mysql_connect("localhost","root","");
 $exe = mysql_select_db('womensgroup',$con);
-$uri = $_SERVER["QUERY_STRING"];
-//echo $uri;
-if(isset($_REQUEST['Submit']))
-{
-	$a1=$_POST['username'];
-	$a2=$_POST['password'];
-	echo $a1;
-	if (($_POST['textfield']=="Admin") and  ($_POST['textfield2']=="Admin")) 
-	{
-	    @$_SESSION['username'] = $_REQUEST['username'];
-		
-		echo '<script>alert("Admin Login successful");</script>';
-		$URL="AdminHome.php";
-		echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
-		echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";	
-	}
-	else if($_POST['select']=="Employee")
-	{
-		$sel ="select * from employee where username = '".$_POST['textfield']."' and  password = '".$_POST['textfield2']."' "; 
-		$run = mysql_query($sel);
-		$getNo = mysql_num_rows($run);
-		if($getNo!='')
-		{
-			@$_SESSION['username'] = $_REQUEST['textfield'];
-			
-			$getRecords = mysql_fetch_array($run);
-			echo '<script>alert("Employee Login successful");</script>';
-			$URL="EmployeeHome.php";
-			echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
-			echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
-		}
-		else
-		{
-		echo '<script>alert("Invalid   username and Password!");</script>';
-		}
-	}	
-	
-	else if($_POST['select']=="User")
-	{
-		$sel ="select * from login where username = '".$_POST['textfield']."' and  password = '".$_POST['textfield2']."' "; 
-		$run = mysql_query($sel);
-		$getNo = mysql_num_rows($run);
-		if($getNo!='')
-		{
-			@$_SESSION['username'] = $_REQUEST['textfield'];
-			
-			$getRecords = mysql_fetch_array($run);
-			echo '<script>alert("User Login successful");</script>';
-			$URL="UserHome.php";
-			echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
-			echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
-		}
-		else
-		{
-		echo '<script>alert("Invalid   username and Password!");</script>';
-		}
-	}	
-	
-	
-}	
-if(isset($_REQUEST['Submit2']))
-{
-$_POST['username']="";
-$_POST['password']="";
+session_start(); 
+error_reporting(0);
+if(isset($_REQUEST['ok']))
+{	
+@$_SESSION['username'] = $_POST['getreg'];
+
+echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
+echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
+
 }
-	?>
-
-
-
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -107,6 +48,9 @@ https://templatemo.com/tm-545-finance-business
 }
 .style14 {font-family: "Times New Roman", Times, serif; font-size: 24px; font-weight: bold; color: #0000FF; }
 .style16 {font-family: "Times New Roman", Times, serif}
+.style2 {font-family: "Times New Roman", Times, serif;
+	font-size: 18px;
+}
 -->
   </style>
   </head>
@@ -134,18 +78,18 @@ https://templatemo.com/tm-545-finance-business
           <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
               <li class="nav-item active">
-                <a class="nav-link" href="AdminHome.php">Home
+                <a class="nav-link" href="UserHome.php">Home
                   <span class="sr-only">(current)</span>
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="AddGroup.php">New Group</a>
+                <a class="nav-link" href="ViewMeeting.php">View Meeting</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="AddEmployee.php">Employee</a>
+                <a class="nav-link" href="ViewPayment.php">View Payment</a>
               </li>
 			   <li class="nav-item">
-                <a class="nav-link" href="AdminReport.php">Report</a>
+                <a class="nav-link" href="AddFeedback.php">Feedback</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="Login.php">Logout</a>
@@ -162,7 +106,10 @@ https://templatemo.com/tm-545-finance-business
         <div class="Modern-Slider">
           <!-- Item -->
           <div class="item item-1">
-            <div class="img-fill"></div>
+            <div class="img-fill">
+                <div class="text-content">
+                </div>
+            </div>
           </div>
           <!-- // Item -->
           <!-- Item -->
@@ -183,31 +130,32 @@ https://templatemo.com/tm-545-finance-business
       <div class="container">
         <div class="row">
           <div class="col-md-20">
-          <h2 align="left">Welcome:Admin</h2>
-          <table width="1428" border="1">
+          <h2 align="left">Welcome:<?php echo $_SESSION['username'];?></h2>
+          <p align="left">&nbsp;</p>
+          <table width="1101" border="1">
             <tr>
-              <td><div align="center">View Payment Report </div></td>
+              <td><div align="center"><span class="style2">View Meeting Details </span></div></td>
             </tr>
             <tr>
-              <td><table width="1403" height="67" border="1">
-                <tr>
-                  <td><span class="style16">Payment ID </span></td>
-                  <td><span class="style16">Payment Date </span></td>
-                  <td><span class="style16">Member ID </span></td>
-                  <td><span class="style16">Member Name </span></td>
-                  <td><span class="style16">Team Name </span></td>
-				   <td><span class="style16">Loan Name </span></td>
-                  <td><span class="style16">Loan Amount </span></td>
-                  <td><span class="style16">Due Amount </span></td>
-                  <td><span class="style16">Due Count </span></td>
-                  <td><span class="style16">Collection Amount </span></td>
-                  <td><span class="style16">Payment Receipt </span></td>
-                </tr>
-                <tr>
-                  <?php
+              <td><table width="1098" height="67" border="1">
+                  <tr>
+                    <td><span class="style16">Meeting ID </span></td>
+                    <td><span class="style16">Meeting Date </span></td>
+                    <td><span class="style16">Team Name </span></td>
+                    <td><span class="style16">Meeting Place </span></td>
+                    <td><span class="style16">Guest Name </span></td>
+                    <td><span class="style16">Member Details </span></td>
+                    <td><span class="style16">Meeting Description </span></td>
+                    <td><span class="style16">Start Time </span></td>
+                    <td><span class="style16">End Time </span></td>
+					 <td><span class="style16">MeetingLink</span></td>
+					  <td><span class="style16">Meeting Image</span></td>
+                  </tr>
+                  <tr>
+                    <?php
 					$rowsPerPage =7;
 		    		require_once("mysql.php");
-		$sql = "SELECT * FROM addpayment ";
+		$sql = "SELECT * FROM addmeeting  ";
 					
 					$result = mysql_query($sql);	
 					$row = mysql_fetch_array($result);
@@ -215,43 +163,63 @@ https://templatemo.com/tm-545-finance-business
 					$i=0; 
 					while($i < $num) 
 					{
-								$a1=mysql_result($result,$i,"paymentid");
-								$a2=mysql_result($result,$i,"paymentdate");
-								$a3=mysql_result($result,$i,"memberid");
-								$a4=mysql_result($result,$i,"membername");	
-								$a5=mysql_result($result,$i,"teamname");
-								$a6=mysql_result($result,$i,"loanname");
-								$a7=mysql_result($result,$i,"loanamount");
-							    $a8=mysql_result($result,$i,"dueamount");
-								$a9=mysql_result($result,$i,"duecount");
-								$a10=mysql_result($result,$i,"collectionamount");
-								$a11=mysql_result($result,$i,"paymentreceipt");
+								$a1=mysql_result($result,$i,"meetingid");
+								$a2=mysql_result($result,$i,"meetingdate");
+								$a3=mysql_result($result,$i,"teamname");
+								$a4=mysql_result($result,$i,"meetingplace");	
+								$a5=mysql_result($result,$i,"guestname");
+								$a6=mysql_result($result,$i,"membersdetails");
+							    $a7=mysql_result($result,$i,"meetingdescriptions");
+								$a8=mysql_result($result,$i,"starttime");
+								$a9=mysql_result($result,$i,"endtime");
+								$a10=mysql_result($result,$i,"meetinglink");
+								$a11=mysql_result($result,$i,"meetingimage");
 								
+								
+								
+								
+								
+												
 			?>
-                  <td><?php echo $a1; ?></td>
-                  <td><?php echo $a2; ?></td>
-                  <td><?php echo $a3; ?></td>
-                  <td><?php echo $a4; ?></td>
-                  <td><?php echo $a5; ?></td>
-                  <td><?php echo $a6; ?></td>
-                  <td><?php echo $a7; ?></td>
-                  <td><?php echo $a8; ?></td>
-                  <td><?php echo $a9; ?></td>
-				  <td><?php echo $a10; ?></td>
-                  <td><img src="payment/<?php echo $a11; ?>" title="<?php echo $a11; ?>" alt="1" width="242" height="172" border="0"></td>
-                </tr>
-                <?php
+                    <td><?php echo $a1; ?></td>
+                    <td><?php echo $a2; ?></td>
+                    <td><?php echo $a3; ?></td>
+                    <td><?php echo $a4; ?></td>
+                    <td><?php echo $a5; ?></td>
+                    <td><?php echo $a6; ?></td>
+                    <td><?php echo $a7; ?></td>
+                    <td><?php echo $a8; ?></td>
+                    <td><?php echo $a9; ?></td>
+					 <td><?php echo $a10; ?></td>
+					 <td><img src="meetings/<?php echo $a11; ?>" title="<?php echo $a11; ?>" alt="1" width="242" height="172" border="0"></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                  </tr>
+                  <?php
 				$i++;} 
 			?>
               </table></td>
             </tr>
           </table>
-          <p align="justify">&nbsp;</p>
-          <h2 align="left"><em></em></h2>
           <p align="left">&nbsp;</p>
-          </div>
-          <div class="col-md-4">
-           
+          <p align="left">&nbsp;</p>
+          <p align="left">&nbsp;</p>
+          <p align="left">&nbsp;</p>
+          <p align="left">&nbsp;</p>
+          <p align="left">&nbsp;</p>
+          <p align="left">&nbsp;</p>
+          <p align="left">&nbsp;</p>
           </div>
         </div>
       </div>

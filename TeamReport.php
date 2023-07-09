@@ -62,7 +62,7 @@ https://templatemo.com/tm-545-finance-business
     <header class="">
       <nav class="navbar navbar-expand-lg">
         <div class="container">
-          <a class="navbar-brand" href="Homepage.php"><h2>Womens Self-Help Group Portal</h2></a>
+          <a class="navbar-brand" href="Homepage.php"><h2>Womens Group Portal</h2></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>          </button>
           <div class="collapse navbar-collapse" id="navbarResponsive">
@@ -78,19 +78,9 @@ https://templatemo.com/tm-545-finance-business
               <li class="nav-item">
                 <a class="nav-link" href="AddEmployee.php">Employee</a>
               </li>
-			   <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Report</a>
-                    
-                    <div class="dropdown-menu">
-                      <a class="dropdown-item" href="TeamReport.php">Team Report</a>
-					    <a class="dropdown-item" href="EmployeeReport.php">Employee Report</a>
-						  <a class="dropdown-item" href="MemberReport.php">Member Report</a>
-						    <a class="dropdown-item" href="MeetingReport.php">Meeting Report</a>
-							  <a class="dropdown-item" href="PaymentReport.php">Payment Report</a>
-							    <a class="dropdown-item" href="RegisterReport.php">Register Report</a>
-								  <a class="dropdown-item" href="FeedbackReport.php">Feedback Report</a>
-                      </div>
-                </li>
+			   <li class="nav-item">
+                <a class="nav-link" href="AdminReport.php">Report</a>
+              </li>
               <li class="nav-item">
                 <a class="nav-link" href="Login.php">Logout</a>
               </li>
@@ -110,10 +100,14 @@ https://templatemo.com/tm-545-finance-business
           </div>
           <!-- // Item -->
           <!-- Item -->
-         
+          <div class="item item-2">
+            <div class="img-fill"></div>
+          </div>
           <!-- // Item -->
           <!-- Item -->
-        
+          <div class="item item-3">
+            <div class="img-fill"></div>
+          </div>
           <!-- // Item -->
         </div>
     </div>

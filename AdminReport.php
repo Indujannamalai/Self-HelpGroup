@@ -6,68 +6,44 @@ $uri = $_SERVER["QUERY_STRING"];
 //echo $uri;
 if(isset($_REQUEST['Submit']))
 {
-	$a1=$_POST['username'];
-	$a2=$_POST['password'];
-	echo $a1;
-	if (($_POST['textfield']=="Admin") and  ($_POST['textfield2']=="Admin")) 
-	{
-	    @$_SESSION['username'] = $_REQUEST['username'];
-		
-		echo '<script>alert("Admin Login successful");</script>';
-		$URL="AdminHome.php";
-		echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
-		echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";	
-	}
-	else if($_POST['select']=="Employee")
-	{
-		$sel ="select * from employee where username = '".$_POST['textfield']."' and  password = '".$_POST['textfield2']."' "; 
-		$run = mysql_query($sel);
-		$getNo = mysql_num_rows($run);
-		if($getNo!='')
-		{
-			@$_SESSION['username'] = $_REQUEST['textfield'];
-			
-			$getRecords = mysql_fetch_array($run);
-			echo '<script>alert("Employee Login successful");</script>';
-			$URL="EmployeeHome.php";
-			echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
-			echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
-		}
-		else
-		{
-		echo '<script>alert("Invalid   username and Password!");</script>';
-		}
-	}	
 	
-	else if($_POST['select']=="User")
-	{
-		$sel ="select * from login where username = '".$_POST['textfield']."' and  password = '".$_POST['textfield2']."' "; 
-		$run = mysql_query($sel);
-		$getNo = mysql_num_rows($run);
-		if($getNo!='')
-		{
-			@$_SESSION['username'] = $_REQUEST['textfield'];
-			
-			$getRecords = mysql_fetch_array($run);
-			echo '<script>alert("User Login successful");</script>';
-			$URL="UserHome.php";
-			echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
-			echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
-		}
-		else
-		{
-		echo '<script>alert("Invalid   username and Password!");</script>';
-		}
-	}	
-	
-	
+	$$URL="TeamReport.php";
 }	
+
 if(isset($_REQUEST['Submit2']))
 {
-$_POST['username']="";
-$_POST['password']="";
+	
+	$$URL="EmployeeReport.php";
 }
-	?>
+
+if(isset($_REQUEST['Submit3']))
+{
+	
+	$$URL="MemberReport.php";
+}
+if(isset($_REQUEST['Submit4']))
+{
+	
+	$$URL="MeetingReport.php";
+}
+if(isset($_REQUEST['Submit5']))
+{
+	
+	$$URL="PaymentReport.php";
+}
+if(isset($_REQUEST['Submit6']))
+{
+	
+	$$URL="RegisterReport.php";
+}
+if(isset($_REQUEST['Submit7']))
+{
+	
+	$$URL="FeedbackReport.php";
+}
+
+
+?>
 
 
 
@@ -106,7 +82,6 @@ https://templatemo.com/tm-545-finance-business
 	font-weight: bold;
 }
 .style14 {font-family: "Times New Roman", Times, serif; font-size: 24px; font-weight: bold; color: #0000FF; }
-.style16 {font-family: "Times New Roman", Times, serif}
 -->
   </style>
   </head>
@@ -124,6 +99,7 @@ https://templatemo.com/tm-545-finance-business
     <!-- ***** Preloader End ***** -->
 
     <!-- Header -->
+   
 
     <header class="">
       <nav class="navbar navbar-expand-lg">
@@ -186,64 +162,38 @@ https://templatemo.com/tm-545-finance-business
           <h2 align="left">Welcome:Admin</h2>
           <table width="1428" border="1">
             <tr>
-              <td><div align="center">View Payment Report </div></td>
+              <td><div align="center"><a href="teamreport.php">
+                <input type="submit" name="Submit" value="Team Report">
+              </a></div></td>
+              <td><div align="center"><a href="EmployeeReport.php">
+                <input type="submit" name="Submit2" value="Employee Report">
+              </a></div></td>
+              <td><div align="center"><a href="MemberReport.php">
+                <input type="submit" name="Submit3" value="Member Report">
+              </a></div></td>
+              <td><div align="center"><a href="MeetingReport.php">
+                <input type="submit" name="Submit4" value="Meeting Report">
+              </a></div></td>
+              <td><div align="center"><a href="PaymentReport.php">
+                <input type="submit" name="Submit5" value="Payment Report">
+              </a></div></td>
+              <td><div align="center"><a href="RegisterReport.php">
+                <input type="submit" name="Submit6" value="Register Report">
+              </a></div></td>
+              <td><div align="center"><a href="FeedbackReport.php">
+                <input type="submit" name="Submit7" value="Feedback Report">
+              </div></td>
+              <td>&nbsp;</td>
             </tr>
             <tr>
-              <td><table width="1403" height="67" border="1">
-                <tr>
-                  <td><span class="style16">Payment ID </span></td>
-                  <td><span class="style16">Payment Date </span></td>
-                  <td><span class="style16">Member ID </span></td>
-                  <td><span class="style16">Member Name </span></td>
-                  <td><span class="style16">Team Name </span></td>
-				   <td><span class="style16">Loan Name </span></td>
-                  <td><span class="style16">Loan Amount </span></td>
-                  <td><span class="style16">Due Amount </span></td>
-                  <td><span class="style16">Due Count </span></td>
-                  <td><span class="style16">Collection Amount </span></td>
-                  <td><span class="style16">Payment Receipt </span></td>
-                </tr>
-                <tr>
-                  <?php
-					$rowsPerPage =7;
-		    		require_once("mysql.php");
-		$sql = "SELECT * FROM addpayment ";
-					
-					$result = mysql_query($sql);	
-					$row = mysql_fetch_array($result);
-					$num=mysql_num_rows($result);
-					$i=0; 
-					while($i < $num) 
-					{
-								$a1=mysql_result($result,$i,"paymentid");
-								$a2=mysql_result($result,$i,"paymentdate");
-								$a3=mysql_result($result,$i,"memberid");
-								$a4=mysql_result($result,$i,"membername");	
-								$a5=mysql_result($result,$i,"teamname");
-								$a6=mysql_result($result,$i,"loanname");
-								$a7=mysql_result($result,$i,"loanamount");
-							    $a8=mysql_result($result,$i,"dueamount");
-								$a9=mysql_result($result,$i,"duecount");
-								$a10=mysql_result($result,$i,"collectionamount");
-								$a11=mysql_result($result,$i,"paymentreceipt");
-								
-			?>
-                  <td><?php echo $a1; ?></td>
-                  <td><?php echo $a2; ?></td>
-                  <td><?php echo $a3; ?></td>
-                  <td><?php echo $a4; ?></td>
-                  <td><?php echo $a5; ?></td>
-                  <td><?php echo $a6; ?></td>
-                  <td><?php echo $a7; ?></td>
-                  <td><?php echo $a8; ?></td>
-                  <td><?php echo $a9; ?></td>
-				  <td><?php echo $a10; ?></td>
-                  <td><img src="payment/<?php echo $a11; ?>" title="<?php echo $a11; ?>" alt="1" width="242" height="172" border="0"></td>
-                </tr>
-                <?php
-				$i++;} 
-			?>
-              </table></td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
             </tr>
           </table>
           <p align="justify">&nbsp;</p>
